@@ -1,123 +1,160 @@
 
+// import some frameworks ,and mayor changes in logic of code so can conform to extra credit. Note i'm using Function now to encapsulted code , and not repeating myself.
 
 
-// I am repeating my self to much ,and the relashion ship of the properties is somewhat abstract. Use of class to represent the players would be more flexible than using dicctionary.
+import UIKit
 
 // people & carateristics
 
-// without using "Anyobject" as a type declaration.
+var playersArray: [[String:Any]] = []
 
-let JoeSmith = ["name" : "JoeSmith", "height": "42","Experiance": "yes", "guardians" : "Jim & Jan Smith"]
+/////////////////////////////////////
+/////////////////////////////////////
+///////////Corrections///////////////
+/////////////////////////////////////
+/////////////////////////////////////
 
-let JillTanner = ["name" : "JillTanner", "height" : "36", "Experiance": "yes", "guardians" : "Clara Tanner"]
+//fixed Data specific, (HerschelKrustofski) & some minor issues with names of players
 
-let BillBon = ["name" : "BillBon", "height" : "43", "Experiance": "yes","guardians" : "Sara & Jenny Bon" ]
+func addPlayer(name: String, height: Double, experience: String, guardian: String) {
+    
+    let player: [String:Any] = [
+        "name": name,
+        "height": height,
+        "experience": experience,
+        "guardian": guardian
+    ]
+    playersArray.append(player)
+}
 
-let	EvaGordon = ["name" : "EvaGordon","height" : "45", "Experiance": "no", "guardians" : "Wendy & Mike Gordon"]
+addPlayer("Joe Smith", height: 42.0, experience: "Yes", guardian: "Jim nad Jan Smith")
+addPlayer("Jill Tanner", height: 36.0, experience: "Yes", guardian: "Clara Tanner")
+addPlayer("Bill Bon", height: 43.0, experience: "Yes", guardian: "Sarah and Jenny Bon")
+addPlayer("Eva Gordon", height: 45.0, experience: "No", guardian: "Wendy and Mike Gordon")
+addPlayer("Matt Gill", height: 40.0, experience: "No", guardian: "Charles and Sylvia Gill")
+addPlayer("Kimmy Stein", height: 41.0, experience: "No", guardian: "Bill and Hillary Stein")
+addPlayer("Sammy Adams", height: 45.0, experience: "No", guardian: "Jeff Adams")
+addPlayer("Kari Saygun", height: 42.0, experience: "Yes", guardian: "Heather Bledsoe")
+addPlayer("Suzane Greenberg", height: 44.0, experience: "Yes", guardian: "Henrietta Dumas")
+addPlayer("Sal Dali", height: 41.0, experience: "No", guardian: "Gala Dali")
+addPlayer("Joe Kavalier", height: 39.0, experience: "No", guardian: "Same and Elaine Kavalier")
+addPlayer("Ben Finkelstein", height: 44.0, experience: "No", guardian: "Aaron and Jill Finkelstein")
+addPlayer("Diego Soto", height: 41.0, experience: "Yes", guardian: "Robin and Sarika Soto")
+addPlayer("Chloe Alaska", height: 47.0, experience: "No", guardian: "David and Jamie Alaska")
+addPlayer("Arnold Willis", height: 43.0, experience: "No", guardian: "Claire Willis")
+addPlayer("Phillip Helm", height: 44.0, experience: "Yes", guardian: "Thomas Helm and Eva Jones")
+addPlayer("Les Clay", height: 42.0, experience: "Yes", guardian: "Wynonna Brown")
+addPlayer("Herschel Krustofski", height: 45, experience: "Yes", guardian: "Hyman and Rachel Krustofski")
 
-let MattGill = ["name" : "MattGill", "height" : "40", "Experiance": "no","guardians" : "Charles & Sylvia Gill" ]
-
-let KimmyStein = ["name" : "KimmyStein", "height" : "41", "Experiance": "no","guardians" : "Bill & Hillary Stein" ]
-
-let SammyAdams = ["name" : "SammyAdams ", "height" : "45", "Experiance": "no","guardians" : "Jeff Adams" ]
-
-let KarlSaygan = ["name" : "BKarlSaygan ", "height" : "42", "Experiance": "yes","guardians" : "Heather Bledsoe" ]
-
-let SuzaneGreenberg = ["name" : "uzaneGreenberg", "height" : "44", "Experiance": "yes","guardians" : "Henrietta Dumas" ]
-
-let SalDali = ["name" : "SalDali", "height" : "41", "Experiance": "no","guardians" : "Gala Dali" ]
-
-let JoeKavalier = ["name" : "JoeKavalier", "height" : "39", "Experiance": "no","guardians" : "Sam & Elaine Kavalier" ]
-
-let BenFinkelstein = ["name" : "enFinkelstein", "height" : "44", "Experiance": "no","guardians" : "Aaron & Jill Finkelstein" ]
-
-let DiegoSoto = ["name" : "DiegoSoto", "height" : "41", "Experiance": "yes","guardians" : "Robin & Sarika Soto" ]
-
-let ChloeAlaska = ["name" : "ChloeAlaska", "height" : "47", "Experiance": "no","guardians" : "David & Jamie Alaska" ]
-
-let ArnoldWillis = ["name" : "ArnoldWillis", "height" : "43", "Experiance": "no","guardians" : "Claire Willis" ]
-
-let PhillipHelm = ["name" : "PhillipHelm ", "height" : "44", "Experiance": "yes","guardians" : "Thomas Helm and Eva Jones" ]
-
-let LesClay = ["name" : "LesClay" ,"height" : "42", "Experiance": "yes","guardians" : "Wynonna Brown" ]
-
-let HerschelKrustofski = ["HerschelKrustofski" : "BillBon", "height" : "45", "Experiance": "yes","guardians" : "Hyman and Rachel Krustofski" ]
-
-// all the player in array
-
-let players = [JoeSmith,JillTanner,BillBon,EvaGordon,MattGill,KimmyStein,SammyAdams,KarlSaygan,SuzaneGreenberg,SalDali,JoeKavalier,BenFinkelstein,DiegoSoto,ChloeAlaska,ArnoldWillis,PhillipHelm,LesClay,HerschelKrustofski]
-
-
-players.count
 
 // experiance players vs unexperiencepalyer
 
-var experiencedPlayers : [[String: String]] = []
-var unexperiencedPlayers : [[String: String]] = []
+var experiencedPlayers : [[String: Any]] = []
+var unexperiencedPlayers : [[String: Any]] = []
 
-// populating "[[String: String]]" with players
-// using func will encapsulted code and can be call when necesery
+// this func distributes players base on their experiance & use of unwarping optinal values with if let stament to take real value out of dic.
 
-for player in players {
-    if player["Experiance"] == "yes" {
-        experiencedPlayers.append(player)
-    } else if player["Experiance"] == "no" {
-        unexperiencedPlayers.append(player)
+func experienceDistribution(team: [[String:Any]]) {
+    
+    for player in team {
+        if let experience = player["experience"] as? String {
+            if experience == "Yes"  {
+                experiencedPlayers.append(player)
+            } else {
+                unexperiencedPlayers.append(player)
+            }
+        }
     }
 }
 
-// empty teams [[String: String]]
-
-var dragons: [[String: String]] = [],sharks: [[String: String]] = [], raptors: [[String: String]] = []
-
-// gruping teams [[String: String]] in arrays so we can append results
-
-var teams = [dragons, sharks, raptors]
-
-// finding how many players and experiencedPlayers per team
+// calling func, populatin playersArray
 
 
-let averageTeamsPlayerCount = players.count / teams.count
-let experiencedPlayersCount = experiencedPlayers.count / teams.count
+experienceDistribution(playersArray)
 
-//populating teams with experiencedPlayers
+// logic to sort height of players
 
-for experiencedPlayer in experiencedPlayers {
-    if dragons.count < experiencedPlayersCount {
-        dragons.append(experiencedPlayer)
-    } else if sharks.count < experiencedPlayersCount {
-        sharks.append(experiencedPlayer)
-    } else if raptors.count < experiencedPlayersCount {
-        raptors.append(experiencedPlayer)
+experiencedPlayers.sort { ($0["height"] as? Double)! < ($1["height"] as? Double)! }
+unexperiencedPlayers.sort { ($0["height"] as? Double)! > ($1["height"] as? Double)! }
+
+
+// empty teams [[String: Any]]
+
+var dragons: [[String: Any]] = [],sharks: [[String: Any]] = [], raptors: [[String: Any]] = []
+
+// finding how many un/experiencedPlayers per team
+
+func playerDistribution(experienceGroup: [[String:Any]]) {
+    
+    for (index, value) in experienceGroup.enumerate() {
+        if index % 3 == 0 {
+            dragons.append(value)
+        } else if index % 3 == 1 {
+            sharks.append(value)
+        } else if index % 3 == 2 {
+            raptors.append(value)
+        }
     }
 }
 
-//populating teams with unexperianceplayer
 
-for unexperiencedPlayer in unexperiencedPlayers {
-    if dragons.count < averageTeamsPlayerCount {
-        dragons.append(unexperiencedPlayer)
-    } else if sharks.count < averageTeamsPlayerCount {
-        sharks.append(unexperiencedPlayer)
-    } else if raptors.count < averageTeamsPlayerCount {
-        raptors.append(unexperiencedPlayer)
-    }
-}
+// calling func populating
+
+playerDistribution(experiencedPlayers)
+playerDistribution(unexperiencedPlayers)
 
 
 //Create personal letters to parents by for in loop form using key from the dictianry
 
-for dragon in dragons {
-    print("\(dragon["guardians"]), your son \(dragon["name"]) has being selected to be in dragons team")
+/////////////////////////////////////
+/////////////////////////////////////
+///////////Corrections///////////////
+/////////////////////////////////////
+/////////////////////////////////////
+
+// fix the unwraiping of optianls.
+// ad son syntatic sugar to the console  so readability is improve
+
+func playerLetter(teamArray: [[String:Any]], teamName: String, firstPractice: String) {
+    
+    for player in teamArray {
+        if let name = player["name"] as? String, let guardian = player["guardian"] as? String {
+            print("Dear \(guardian),\n\(name) has been selected to play for the \(teamName).  The first practice will be on \(firstPractice). We look forward to having an exciting season\n")
+        }
+    }
 }
 
-for raptor in raptors {
-    print("\(raptor["guardians"]), your son \(raptor["name"]) has being selected to be in raptor team")
+playerLetter(dragons, teamName: "Dragons", firstPractice: "someday")
+playerLetter(sharks, teamName: "Sharks", firstPractice: "someday")
+playerLetter(raptors, teamName: "Raptors", firstPractice: "someday")
+
+// see if the avrege height each team is inside 1.5
+
+func teamAverageHeight(team: [[String:Any]]) -> Double {
+    
+    var teamHeightArray: [Double] = []
+    var teamHeight: Double = 0.0
+    
+    // getting the heghit from dic unwarping values with if let
+    for player in team {
+        if let height = player["height"] as? Double {
+            teamHeightArray.append(height)
+        }
+    }
+    // sum inidiviald height
+    for i in teamHeightArray {
+        teamHeight += i
+    }
+    // all of that to get here, totalheight per team  / by 6
+    return teamHeight / Double(teamHeightArray.count)
 }
 
-for shark in sharks {
-    print("\(shark["guardians"]), your son \(shark["name"]) has being selected to be in shark team")
-}
+
+teamAverageHeight(dragons)
+teamAverageHeight(sharks)
+teamAverageHeight(raptors)
+
+
 
 
 

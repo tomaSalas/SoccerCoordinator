@@ -104,7 +104,7 @@ playerDistribution(experiencedPlayers)
 playerDistribution(unexperiencedPlayers)
 
 
-//Create personal letters to parents by for in loop form using key from the dictianry
+//Create personal letters to parents 
 
 /////////////////////////////////////
 /////////////////////////////////////
